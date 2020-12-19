@@ -19,7 +19,7 @@ def main():
             return check_commit_footer_feature_id(feature_id, full_header)
     else:
         print('ERROR: commit message not compliant with requriements')
-        return 1;
+        sys.exit(1)
 
 def get_commit_header_tag(header):
     header_regex = re.search('^\[(.*)\] ', header)
@@ -36,7 +36,7 @@ def check_commit_header(header):
         return 0;
     else:
         print('ERROR with header commit tag')
-        return 1;
+        sys.exit(1);
 
 def check_commit_footer_feature_id(feature_id, header):
     header_tag = get_commit_header_tag(header)
@@ -48,10 +48,10 @@ def check_commit_footer_feature_id(feature_id, header):
             return 0
         else:
             print('ERROR: footer id is not compliant with commit header tag')
-            return 1
+            sys.exit(1)
     else:
         print('ERR: footer id is not compliant with commit header tag')
-        return 1
+        sys.exit(1)
     
 if __name__ == "__main__":
     # execute only if run as a script
